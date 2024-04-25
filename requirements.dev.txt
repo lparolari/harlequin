@@ -1,0 +1,9 @@
+-r requirements.txt
+
+black
+isort
+pytest
+pytest-cov
+coverage
+pre-commit
+conventional-pre-commit

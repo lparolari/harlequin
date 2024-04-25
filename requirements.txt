@@ -1,0 +1,12 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
+# dependencies
+torch==2.2.2+cu121
+torchvision==0.17.2+cu121
+lightning==2.2.1
+tqdm
+numpy
+matplotlib
+transformers
+diffusers
+pycocotools
