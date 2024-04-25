@@ -27,7 +27,36 @@ We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human
 
 ## Usage
 
-TBD
+TBD: installation?
+
+```python
+from harlequin import Harlequin
+
+harlequin = Harlequin(
+    "data/harlequin/images",
+    "data/harlequin/annotations/instances_test.json"
+)
+
+print(len(harlequin))  # 13434
+```
+
+## Data
+
+We release Harlequin annotations and images at this link: [[Google Drive]](https://drive.google.com/drive/folders/138PNh5tBOPM8eBlpS6hfN1e_6NYvkz4I?usp=sharing).
+
+Harlequin is exported in coco format, and provides three annotations file in the `annotations` folder, while images are in the `images` folder.
+
+```
+data
+`-- harlequin
+    |-- annotations
+    |   |-- instances_train.json
+    |   |-- instances_val.json
+    |   `-- instances_test.json
+    `-- images
+```
+
+You can download it in the `data` folder.
 
 ## Setup
 
