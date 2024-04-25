@@ -138,3 +138,4 @@ dmypy.json
 
 # logs
 lightning_logs/
+wandb_logs/
