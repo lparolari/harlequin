@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Ci: fix install. [lparolari]
+- Release: v0.1.3. [lparolari]
 - Ci: write content permission. [lparolari]
 - Release: v0.1.2. [lparolari]
 - Ci: release_message.sh executable. [lparolari]
