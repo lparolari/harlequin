@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "harlequin-dataset"
-version = "0.1.0"
+version = ""
 description = "Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension"
 authors = ["lparolari <luca.parolari23@gmail.com>"]
 license = "MIT"
