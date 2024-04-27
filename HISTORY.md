@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Ci: write content permission. [lparolari]
+- Release: v0.1.2. [lparolari]
 - Ci: release_message.sh executable. [lparolari]
 - Release: v0.1.1. [lparolari]
 - Ci: move release.yml in workflows folder. [lparolari]
