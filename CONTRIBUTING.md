@@ -127,4 +127,5 @@ virtualenv:            ## Create a virtual environment.
 install:               ## Install dependencies.
 precommit-install:     ## Install pre-commit hooks.
 precommit-uninstall:   ## Uninstall pre-commit hooks.
+release:               ## Create a new tag for release.
 ```

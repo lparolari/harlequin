@@ -25,9 +25,13 @@ We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human
 
 ![docs/pipeline.jpg](docs/pipeline.jpg)
 
-## Usage
+## Installation
 
-TBD: installation?
+```
+pip install harlequin-dataset
+```
+
+## Usage
 
 ```python
 from harlequin import Harlequin
@@ -103,6 +107,7 @@ virtualenv:            ## Create a virtual environment.
 install:               ## Install dependencies.
 precommit-install:     ## Install pre-commit hooks.
 precommit-uninstall:   ## Uninstall pre-commit hooks.
+release:               ## Create a new tag for release.
 ```
 
 Specifically, 

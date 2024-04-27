@@ -7,3 +7,4 @@ pytest-cov
 coverage
 pre-commit
 conventional-pre-commit
+gitchangelog

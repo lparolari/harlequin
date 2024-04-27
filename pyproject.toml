@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "harlequin-dataset"
+version = "0.1.0"
+description = "Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension"
+authors = ["lparolari <luca.parolari23@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    {include = "harlequin"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
