@@ -49,3 +49,5 @@ jobs:
         poetry build
         twine upload dist/*
 
+permissions:
+  contents: write
