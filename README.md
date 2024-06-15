@@ -1,8 +1,10 @@
-# Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension
+# Harlequin Dataset
 
 [Luca Parolari](https://github.com/lparolari), [Elena Izzo](https://www.linkedin.com/in/elena-izzo-b87b69164), [Lamberto Ballan](http://www.lambertoballan.net/)
 
-[[Paper]](https://openreview.net/forum?id=EZYvU2oC6J)
+[[paper]](https://openreview.net/forum?id=EZYvU2oC6J) [[poster]](https://drive.google.com/file/d/1deufI2SprOwSVgJg8NuouFnDbA1yIRvX/view?usp=sharing) [[code]](https://github.com/lparolari/harlequin)
+
+This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://openreview.net/forum?id=EZYvU2oC6J).
 
 ![teaser.jpg](docs/teaser.jpg)
 
@@ -29,8 +31,9 @@ We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human
 
 ## Updates
 
-* 2024-06-18: poster presented at SynData4CV @ CVPR2024
+* 2024-06-18: poster presented at SynData4CV @ CVPR 2024
 * 2024-06-17: code released
+* 2024-04-09: accepted to SynData4CV @ CVPR 2024
 
 ## Download
 
