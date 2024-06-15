@@ -11,8 +11,8 @@ help:                  ## Show the help.
 
 .PHONY: fmt
 fmt:                   ## Format code using black & isort.
-	@$(VENV)isort *.py harlequin/
-	@$(VENV)black *.py harlequin/
+	@$(VENV)isort harlequin/
+	@$(VENV)black harlequin/
 
 .PHONY: test
 test:                  ## Run tests.
