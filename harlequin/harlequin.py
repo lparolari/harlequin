@@ -38,7 +38,6 @@ if __name__ == "__main__":
     # Run with: `python -m harlequin.harlequin --show_data`
 
     import argparse
-    import json
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=str, default="data/harlequin/images/")
