@@ -4,6 +4,12 @@ Changelog
 
 (unreleased)
 ------------
+- Docs: update readme. [lparolari]
+- Docs: add docs in ds_show. [lparolari]
+- Feat: add dataset search function. [lparolari]
+- Chore: fix make fmt. [lparolari]
+- Feat: rename dataset class. [lparolari]
+- Release: v0.1.5. [lparolari]
 - Ci: fix install. [lparolari]
 - Release: v0.1.3. [lparolari]
 - Ci: write content permission. [lparolari]
