@@ -27,11 +27,14 @@ We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human
 
 ![docs/pipeline.jpg](docs/pipeline.jpg)
 
+## Updates
+
+* 2024-06-18: poster presented at SynData4CV @ CVPR2024
+* 2024-06-17: code released
+
 ## Download
 
-We release Harlequin annotations and images at this link: [[Google Drive]](https://drive.google.com/drive/folders/138PNh5tBOPM8eBlpS6hfN1e_6NYvkz4I?usp=sharing).
-
-> ⚠ images will be available soon for download
+⚠⚠ Images and annotations will be available soon! Stay tuned! ~~We release Harlequin annotations and images at this link: [[Google Drive]](https://drive.google.com/drive/folders/138PNh5tBOPM8eBlpS6hfN1e_6NYvkz4I?usp=sharing).~~
 
 Harlequin is exported in coco format, and provides three annotation files (one per split) in the `annotations` folder. Images can be found in the `images` folder.
 
