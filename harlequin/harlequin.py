@@ -4,7 +4,7 @@ import os
 from torchvision.datasets import CocoDetection
 
 
-class Harlequin(CocoDetection):
+class HarlequinDataset(CocoDetection):
     """
     Interface to data that follows the COCO dataset format detailed
     at https://cocodataset.org/#format-data.
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    harlequin = Harlequin(root=args.root, annFile=args.ann_file)
+    harlequin = HarlequinDataset(root=args.root, annFile=args.ann_file)
 
     if args.show_sample:
         harlequin.show_sample(args.index)

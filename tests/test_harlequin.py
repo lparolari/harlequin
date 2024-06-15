@@ -1,14 +1,14 @@
 import unittest
 from PIL import Image
 
-from harlequin import Harlequin
+from harlequin import HarlequinDataset
 
 
 def harlequin_dataset(
     root="data/harlequin/images",
     ann_file="data/harlequin/annotations/instances_test.json",
 ):
-    return Harlequin(root, ann_file)
+    return HarlequinDataset(root, ann_file)
 
 
 class TestHarlequin(unittest.TestCase):
