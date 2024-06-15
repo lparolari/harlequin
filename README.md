@@ -2,7 +2,7 @@
 
 [Luca Parolari](https://github.com/lparolari), [Elena Izzo](https://www.linkedin.com/in/elena-izzo-b87b69164), [Lamberto Ballan](http://www.lambertoballan.net/)
 
-[[Paper]](todo.pdf)
+[[Paper]](https://openreview.net/forum?id=EZYvU2oC6J)
 
 ![teaser.jpg](docs/teaser.jpg)
 
@@ -21,34 +21,19 @@ This approach eliminates manual data collection and annotation, enabling scalabi
 
 We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human-annotated datasets. Our experiments show that the pre-training on artificial data is beneficial for performance.
 
+[Read the paper 🚀](https://openreview.net/forum?id=EZYvU2oC6J)
+
 ## Our pipeline
 
 ![docs/pipeline.jpg](docs/pipeline.jpg)
 
-## Installation
-
-```
-pip install harlequin-dataset
-```
-
-## Usage
-
-```python
-from harlequin import Harlequin
-
-harlequin = Harlequin(
-    "data/harlequin/images",
-    "data/harlequin/annotations/instances_test.json"
-)
-
-print(len(harlequin))  # 13434
-```
-
-## Data
+## Download
 
 We release Harlequin annotations and images at this link: [[Google Drive]](https://drive.google.com/drive/folders/138PNh5tBOPM8eBlpS6hfN1e_6NYvkz4I?usp=sharing).
 
-Harlequin is exported in coco format, and provides three annotations file in the `annotations` folder, while images are in the `images` folder.
+> ⚠ images will be available soon for download
+
+Harlequin is exported in coco format, and provides three annotation files (one per split) in the `annotations` folder. Images can be found in the `images` folder.
 
 ```
 data
@@ -60,22 +45,148 @@ data
     `-- images
 ```
 
-You can download it in the `data` folder.
+## Installation
 
-## Setup
-
-> **NOTE**: if you want to contribute, please see Sec. [Development](#development). The following instuctions are for a production environment (e.g. cluster).
-
-### Requirements
-
-* Python 3.10
-* Anaconda (we suggest [Miniconda](https://docs.anaconda.com/free/miniconda/index.html))
+* (Optional) Setup the environment with Anaconda (or [Miniconda](https://docs.anaconda.com/free/miniconda/index.html))
+* Python >= 3.10
 
 ```
-pip install -r requirements.txt
+pip install harlequin-dataset
 ```
 
-Our code uses in PyTorch 2 and Pytorch Lightning 2.
+## Usage
+
+### Basic usage
+
+```python
+from harlequin import HarlequinDataset
+
+harlequin = HarlequinDataset(
+    "data/harlequin/images",
+    "data/harlequin/annotations/instances_test.json"
+)
+
+print(len(harlequin))  # 13434
+```
+
+### Using targets
+
+```python
+from harlequin import HarlequinDataset
+
+ds = HarlequinDataset(
+    "data/harlequin/images", "data/harlequin/annotations/instances_test.json"
+)
+
+i = 0  # simulating a training setp
+
+sample_id = ds.get_id(i)
+
+img = ds.get_image(sample_id)
+img_ann = ds.get_image_ann(sample_id)
+tgt_ann = ds.get_target_ann(sample_id)
+
+# harlequin comes with both captions and queries,
+# we can extract queries from caption using indexes
+caption = img_ann["caption"]
+queries = [
+    caption[query_pos[0] : query_pos[1]]
+    for tgt in tgt_ann
+    if (query_pos := tgt["tokens_positive"][0])
+]
+
+print(caption)
+# The man with a gray jacket and cyan sunglasses is holding cameras and standing in front of a car .
+
+print(queries)
+# ['cyan sunglasses', 'a gray jacket', 'cameras', 'a car', 'The man']
+
+# each target has a bounding box associated, identifying it in the image
+boxes = [tgt["bbox"] for tgt in tgt_ann]
+
+print(boxes)
+# [[222, 120, 115, 35], [53, 164, 438, 292], [83, 336, 356, 136], [1, 372, 464, 139], [56, 70, 432, 441]]
+```
+
+### Reference API
+
+The `HarlequinDataset` class inherits from `torchvision.datasets.CocoDetection` and this from `torch.utils.data.Dataset`.
+
+It provides two standard methods:
+
+* `__len__` to retrieve dataset length, and
+* `__getitem__` to retrieve a dataset sample along with its annotations by id. This method returns a tuple, where the first element is a `PIL.Image.Image` representing the image and the second a list of dicts representing targets. (See below for target.)
+
+Our implementation provides few additional methods that simplify the interface and, in some cases, make the code faster.
+
+* `get_id`, return the `int` representing the sample id associated to given index;
+* `get_image`, return the `PIL.Image.Image` image instance given sample id;
+* `get_image_ann`, return image's annotations given sample id in the form of a dict with the following structure
+```python
+dict_keys([
+    'id',
+    'original_img_id',
+    'width',
+    'height',
+    'caption',
+    'file_name'
+])
+```
+* `get_target_ann`, return target's annotations given sample id in the form of a list of dict with following structure:
+```python
+dict_keys(['area',
+    'iscrowd',
+    'image_id',
+    'category_id',
+    'id',
+    'bbox',
+    'tokens_positive',
+    'phrase_ids',
+    'query',
+    'sentence',
+    'image_w',
+    'image_h'
+])
+```
+
+### Tools
+
+We provide some useful scripts to search and visualize samples in the dataset.
+
+#### Search the dataset
+
+Run `python -m tools.ds_search --help` for more information.
+
+```
+$ python -m tools.ds_search --root fake --ann_file data/harlequin/annotations/instances_test.json --search "a \w+ dog runs through a field" 
+sample_id                                i     caption
+---------------------------------------  ----  ----------------------------------
+45832072286111431511163412646150256014   1815  a blue dog runs through a field .
+47795822623162357528822822313898616472   1896  a blue dog runs through a field .
+73296849640710715671926387036903824163   2922  a white dog runs through a field .
+120493081802089305802189965019655331752  4823  a green dog runs through a field .
+171348737941932910553095239170133267695  6757  a black dog runs through a field .
+251972281794307404298339469034250622018  9951  a red dog runs through a field .
+Found 6 entries
+```
+
+#### Visualize some samples
+
+```
+$ python -m tools.ds_show --root data/harlequin/images --ann_file data/harlequin/annotations/instances_test.json --index 1815 1896  --visualize annotation
+```
+![docs/examples/annotation_1815.png](docs/examples/annotation_1815.png)
+![docs/examples/annannotation_1896.png](docs/examples/annotation_1896.png)
+
+## Citation
+
+```
+@inproceedings{parolari2024harlequin,
+  title={Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension},
+  author={Parolari, Luca and Izzo, Elena and Ballan, Lamberto},
+  booktitle={Synthetic Data for Computer Vision Workshop@ CVPR 2024}
+}
+```
 
 ## Development
 
@@ -124,8 +235,3 @@ If you want to manually run those utilities use:
 * `isort *.py harlequin/` to organize imports
 * `black *.py harlequin/` for the code style
 
-## Citation
-
-```
-TODO
-```
