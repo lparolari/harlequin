@@ -2,7 +2,7 @@
 
 [Luca Parolari](https://github.com/lparolari), [Elena Izzo](https://www.linkedin.com/in/elena-izzo-b87b69164), [Lamberto Ballan](http://www.lambertoballan.net/)
 
-[[paper]](https://openreview.net/forum?id=EZYvU2oC6J) [[poster]](https://drive.google.com/file/d/1deufI2SprOwSVgJg8NuouFnDbA1yIRvX/view?usp=sharing) [[code]](https://github.com/lparolari/harlequin)
+[[paper](https://openreview.net/forum?id=EZYvU2oC6J)] [[poster](https://drive.google.com/file/d/1deufI2SprOwSVgJg8NuouFnDbA1yIRvX/view?usp=sharing)] [[code](https://github.com/lparolari/harlequin)]
 
 This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://openreview.net/forum?id=EZYvU2oC6J).
 
@@ -164,7 +164,7 @@ We provide some useful scripts to search and visualize samples in the dataset.
 Run `python -m tools.ds_search --help` for more information.
 
 ```
-$ python -m tools.ds_search --root fake --ann_file data/harlequin/annotations/instances_test.json --search "a \w+ dog runs through a field" 
+$ python -m tools.ds_search --search "a \w+ dog runs through a field" --root --root data/harlequin/images --ann_file data/harlequin/annotations/instances_test.json
 sample_id                                i     caption
 ---------------------------------------  ----  ----------------------------------
 45832072286111431511163412646150256014   1815  a blue dog runs through a field .
@@ -179,7 +179,7 @@ Found 6 entries
 #### Visualize some samples
 
 ```
-$ python -m tools.ds_show --root data/harlequin/images --ann_file data/harlequin/annotations/instances_test.json --index 1815 1896  --visualize annotation
+$ python -m tools.ds_show --index 1815 1896 --visualize annotation --root data/harlequin/images --ann_file data/harlequin/annotations/instances_test.json
 ```
 ![docs/examples/annotation_1815.png](docs/examples/annotation_1815.png)
 ![docs/examples/annannotation_1896.png](docs/examples/annotation_1896.png)
