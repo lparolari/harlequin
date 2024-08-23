@@ -1,13 +1,14 @@
 import argparse
+import json
 
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 from harlequin import HarlequinDataset
 
-
 IMAGE_FMT = "image_{i}.png"
 ANNOTATION_FMT = "annotation_{i}.png"
+DATA_FMT = "data_{i}.json"
 
 
 def main():
@@ -41,28 +42,32 @@ Examples:
         "--visualize",
         type=str,
         default="annotation",
-        choices=["annotation", "image"],
-        help="Sample visualization mode. By default the 'annotation' is used. Two modalities are available: (1) `image` saves the PIL image without annotations, `annotation` saves the matplotlib visualization of the sample with annotations.",
+        choices=["annotation", "image", "data"],
+        help="Sample visualization mode. By default the 'annotation' is used. Three modalities are available: (1) `image` saves the PIL image without annotations, (2) `annotation` saves the matplotlib visualization of the sample with annotations, (3) `data` print sample's data to standard output.",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=str,
-        help=f"Output path or format. By default the file will be saved with format `{IMAGE_FMT}` or `{ANNOTATION_FMT}`, depending on the mode. Available variables for formatting are: `i` for sample's index and `id` for sample's id.",
+        help=f"Output path or format. By default the file will be saved with format `{IMAGE_FMT}`, `{ANNOTATION_FMT}` or `{DATA_FMT}`, depending on the mode. Available variables for formatting are: `i` for sample's index and `id` for sample's id.",
+    )
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="Do not progress bar. Useful for batch processing.",
     )
 
     args = parser.parse_args()
 
-    show_fn = {
-        "image": show_image,
-        "annotation": show_annotation,
-    }[args.visualize]
+    show_fns = {"image": show_image, "annotation": show_annotation, "data": show_data}
+    show_fn = show_fns[args.visualize]
 
     i_list = args.index
 
     ds = HarlequinDataset(args.root, args.ann_file)
 
-    for i in tqdm(i_list):
+    for i in tqdm(i_list, disable=args.quiet):
         show_fn(ds, i, output_fmt=args.output)
 
 
@@ -122,6 +127,26 @@ def show_annotation(ds, i, output_fmt=None):
     plt.axis("off")
     plt.savefig(output)
     plt.close()
+
+
+def show_data(ds, i, output_fmt=None):
+    sample_id = ds.get_id(i)
+
+    tgt_ann = ds.get_target_ann(sample_id)
+    img_ann = ds.get_image_ann(sample_id)
+
+    output = {
+        "images": [img_ann],
+        "annotations": tgt_ann,
+    }
+
+    if output_fmt is None:
+        output_fmt = DATA_FMT
+
+    output_file = output_fmt.format(i=i, id=sample_id)
+
+    with open(output_file, "w") as f:
+        json.dump(output, f, indent=4)
 
 
 if __name__ == "__main__":
