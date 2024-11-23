@@ -2,7 +2,7 @@
 
 [Luca Parolari](https://github.com/lparolari), [Elena Izzo](https://www.linkedin.com/in/elena-izzo-b87b69164), [Lamberto Ballan](http://www.lambertoballan.net/)
 
-[[paper](https://drive.google.com/file/d/10ljhjQ_pnjp1WYaj9guMCsUMV4SRP1cY/view?usp=drive_link)] [[poster](https://drive.google.com/file/d/1a7UyVj9wgJj4eI1IodNJKE3HHRlN93La/view?usp=sharing)] [[code](https://github.com/lparolari/harlequin)]
+[[paper](https://drive.google.com/file/d/10ljhjQ_pnjp1WYaj9guMCsUMV4SRP1cY/view?usp=drive_link)] [[code](https://github.com/lparolari/harlequin)] [[poster](https://drive.google.com/file/d/1a7UyVj9wgJj4eI1IodNJKE3HHRlN93La/view?usp=sharing)] [[graphical abstract](https://drive.google.com/file/d/1CU8AmHaXPeN3vcgIi2y0tmZ_egYyFl3u/view?usp=sharing)]
 
 This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://openreview.net/forum?id=EZYvU2oC6J).
 
