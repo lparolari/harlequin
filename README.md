@@ -2,19 +2,21 @@
 
 [Luca Parolari](https://github.com/lparolari), [Elena Izzo](https://www.linkedin.com/in/elena-izzo-b87b69164), [Lamberto Ballan](http://www.lambertoballan.net/)
 
-[[paper](https://drive.google.com/file/d/10ljhjQ_pnjp1WYaj9guMCsUMV4SRP1cY/view?usp=drive_link)] [[code](https://github.com/lparolari/harlequin)] [[poster](https://drive.google.com/file/d/1a7UyVj9wgJj4eI1IodNJKE3HHRlN93La/view?usp=sharing)] [[graphical abstract](https://drive.google.com/file/d/1CU8AmHaXPeN3vcgIi2y0tmZ_egYyFl3u/view?usp=sharing)]
+[[paper](https://arxiv.org/abs/2411.14807)] [[code](https://github.com/lparolari/harlequin)] [[poster](https://drive.google.com/file/d/1a7UyVj9wgJj4eI1IodNJKE3HHRlN93La/view?usp=sharing)] [[graphical abstract](https://drive.google.com/file/d/1CU8AmHaXPeN3vcgIi2y0tmZ_egYyFl3u/view?usp=sharing)] [[2 min video](https://drive.google.com/file/d/16e-85lJFZd1wgv3XcDhRvzZl5TwrHuFj/view?usp=sharing)]
 
-This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://openreview.net/forum?id=EZYvU2oC6J).
+🌟 Accepted to ICPR 2024
 
 ![teaser.jpg](docs/teaser.jpg)
 
-## About
+This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://arxiv.org/abs/2411.14807).
+
+## Abstract
 
 Referring Expression Comprehension (REC) aims to identify a particular object in a scene by a natural language expression, and is an important topic in visual language understanding.
 
 State-of-the-art methods for this task are based on deep learning, which generally requires expensive and manually labeled annotations. Some works tackle the problem with limited-supervision learning or relying on Large Vision and Language Models. However, the development of techniques to synthesize labeled data is overlooked. 
 
-In this paper, we propose a novel framework that generates artificial data for the REC task, taking into account both textual and visual modalities. 
+In this paper, **we propose a novel framework that generates artificial data for the REC task**, taking into account both textual and visual modalities. 
 At first, our pipeline processes existing data to create variations in the annotations. 
 
 Then, it generates an image using altered annotations as guidance. The result of this pipeline is a new dataset, called *Harlequin*, made by more than 1M queries. 
@@ -23,7 +25,7 @@ This approach eliminates manual data collection and annotation, enabling scalabi
 
 We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human-annotated datasets. Our experiments show that the pre-training on artificial data is beneficial for performance.
 
-[Read the paper 🚀](https://openreview.net/forum?id=EZYvU2oC6J)
+[Read the paper 🚀](https://arxiv.org/abs/2411.14807)
 
 ## Our pipeline
 
@@ -32,7 +34,8 @@ We pre-train two REC models on Harlequin, then fine-tuned and evaluated on human
 ## Updates
 
 * 2024-12-04: presented the poster at ICPR 2024
-* 2024-11-22: upload on arxiv, release of annotation files
+* 2024-11-25: our paper is on arXiv! http://arxiv.org/abs/2411.14807
+* 2024-11-22: release of annotation files
 * 2024-08-31: uploaded camera ready
 * 2024-08-05: accepted to ICPR 2024
 * 2024-06-18: poster presented at SynData4CV @ CVPR 2024
