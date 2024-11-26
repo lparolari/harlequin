@@ -224,10 +224,14 @@ $ python -m tools.ds_show --index 1815 1896 --visualize annotation --root data/h
 ## Citation
 
 ```
-@inproceedings{parolari2024harlequin,
-  title={Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension},
-  author={Parolari, Luca and Izzo, Elena and Ballan, Lamberto},
-  booktitle={Synthetic Data for Computer Vision Workshop@ CVPR 2024}
+@misc{parolari2024harlequin,
+      title={Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension}, 
+      author={Luca Parolari and Elena Izzo and Lamberto Ballan},
+      year={2024},
+      eprint={2411.14807},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2411.14807}, 
 }
 ```
 
