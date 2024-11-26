@@ -10,6 +10,28 @@
 
 This repository contains the pytorch implementation of Harlequin's dataloader and resources for downloading Harlequin's annotation and image files. For details, see the paper [Harlequin: Color-driven Generation of Synthetic Data for Referring Expression Comprehension](https://arxiv.org/abs/2411.14807).
 
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Our pipeline](#our-pipeline)
+- [Updates](#updates)
+- [Download](#download)
+  * [Full split](#full-split)
+  * [Cleaned split](#cleaned-split)
+  * [Images](#images)
+  * [Data format and setup](#data-format-and-setup)
+- [Installation](#installation)
+- [Usage](#usage)
+  * [Basic usage](#basic-usage)
+  * [Using targets](#using-targets)
+  * [Reference API](#reference-api)
+  * [Tools](#tools)
+    + [Search the dataset](#search-the-dataset)
+    + [Visualize some samples](#visualize-some-samples)
+- [Citation](#citation)
+- [Development](#development)
+  * [Utils](#utils)
+
 ## Abstract
 
 Referring Expression Comprehension (REC) aims to identify a particular object in a scene by a natural language expression, and is an important topic in visual language understanding.
